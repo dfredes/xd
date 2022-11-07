@@ -1,0 +1,35 @@
+<ion-header [style.visibility]="content_visibity">
+
+  
+  <ion-toolbar color="primary" class="centro">
+    <ion-back-button slot="start">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title class="centro">Escaner QR</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" padding [style.visibility]="content_visibity">
+  <ion-content class="background"  padding>
+
+  
+
+  <!-- Qr de algo que no se ?? -->
+  <ion-card class="ion-text-center">
+    <ion-card-content>
+      <qrcode [qrdata]="'qrCodeString'" 
+      [width]="256" 
+      [errorCorrectionLevel]="'M'">
+    </qrcode>
+    </ion-card-content>
+
+  </ion-card>
+ <!-- Boton para empezar escaner-->
+ <ion-button expand="block" class="ion-margin" (click)="startScan()">Escanear QR <ion-icon name="qr-code-outline"></ion-icon> </ion-button>
+
+ <ion-item *ngIf="scannedResult"> 
+  <ion-label class="ion-text-wrap"> Scanned Result: {{scannedResult}}</ion-label>
+ </ion-item>
+
+
+</ion-content>

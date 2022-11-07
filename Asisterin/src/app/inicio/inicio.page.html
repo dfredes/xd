@@ -1,0 +1,25 @@
+<ion-header>
+  
+<ion-title></ion-title>
+</ion-header>
+
+<ion-content class="background" padding>
+
+<ion-card>
+  <img src="'../../../../assets/icon/Logo Asisterin.PNG">
+  <form [formGroup]="formularioLogin">
+    <ion-item>
+      <ion-label position="floating"> Usuario </ion-label>
+      <ion-input formControlName="usuario"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"> Contraseña </ion-label>
+      <ion-input formControlName="contrasena"></ion-input>
+    </ion-item>
+    
+  </form>
+  <ion-button expand="block" (click)="login()">Iniciar Sesion</ion-button>
+  <ion-button expand="block"[routerLink]="['/ticket-al']"> <label style="font-size: 12px;" >¿Olvidaste tu Contraseña?</label></ion-button>
+</ion-card> 
+</ion-content>

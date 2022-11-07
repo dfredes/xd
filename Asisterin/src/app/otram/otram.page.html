@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>  
+    <ion-item> 
+      <p>Su ticket se ha enviado de forma exitosa</p>
+    </ion-item> 
+    
+  </ion-card>
+ 
+  <div id="xd">
+  <ion-button color="tertiary" [routerLink]="['/inicio']" *ngIf="user !='Desconocido'">Volver
+  </ion-button>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title>Recuperar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" padding>  
+
+  <ion-card>
+    <ion-item>
+      <p>Introduzca sus datos para enviar un mail de recuperacion</p>
+    </ion-item>
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Nombre Completo:</ion-label>
+        <ion-input type="text" placeholder="Ej:Benjamin cayo tapia"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Rut:</ion-label>
+        <ion-input type="text" placeholder="Ej:20.143.745-K"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+       <ion-label position="floating">Correo:</ion-label>
+       <ion-input type="text" placeholder="Ej:thecochayuyo@gmail.com"></ion-input>
+      </ion-item>
+    
+      
+    </ion-list>
+  
+    
+  </ion-card>  
+  <ion-button color="primary" [routerLink]="['/redirec']">Enviar</ion-button>
+
+  
+
+</ion-content>

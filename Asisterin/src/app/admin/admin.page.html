@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="centro" ></ion-title>
+    <img src="../../assets/icon/asisterin.PNG" alt=""> 
+  </ion-toolbar>
+</ion-header>
+
+ 
+
+<!-- imagen de fondo -->
+<ion-content class="background" padding>
+
+
+  <!-- botoenes superiores (perfil, log out, configuracion) -->
+  <ion-grid class="btncenter">
+    <ion-row>
+      <ion-col>
+        <ion-button  color="tertiary">
+          <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button [routerLink]="['/perfil']">
+          <ion-icon slot="icon-only" name="person-circle-outline" ></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button [routerLink]="['/alum']" color="tertiary">
+          <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+  <!-- menu principal -->
+<ion-container id="centrar">
+ 
+
+  
+
+  
+ <ion-button  class="top-20" size="default" expand="full" color="primary" [routerLink]="['/asistencia-al']" > <ion-icon name="today-outline"></ion-icon> Asistencias</ion-button>
+
+  <ion-button  class="top-20" size="default" expand="full" color="tertiary" [routerLink]="['/secciones']"> <ion-icon name="reader-outline" ></ion-icon> Secciones </ion-button>
+ <ion-button  class="top-20" size="default" expand="full" color="primary" [routerLink]="['/ticket-al']" > <ion-icon name="reader-outline"></ion-icon> Ver Ticket</ion-button>
+
+
+</ion-container> 
+
+</ion-content>
+
