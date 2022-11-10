@@ -112,6 +112,11 @@ export class BaseService {
       return this.isDBReady.asObservable();
     }
   
+    fetchUsuarios(): Observable<Usuarios[]> {
+      return this.listaUsuarios.asObservable();
+    }
+
+
     fetchNoticias(): Observable<Noticias[]> {
       return this.listaNoticias.asObservable();
     }
@@ -123,7 +128,7 @@ export class BaseService {
 
     buscarasistencia() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM asistencia', []).then(res => {
         //creo el arreglo para los registros
         let items: Asistencias[] = [];
         //si existen filas
@@ -153,7 +158,7 @@ export class BaseService {
 
     buscardetalle_asist() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM detalle_asist', []).then(res => {
         //creo el arreglo para los registros
         let items: DetalleAsists[] = [];
         //si existen filas
@@ -179,7 +184,7 @@ export class BaseService {
 
     buscarlistas() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM listado', []).then(res => {
         //creo el arreglo para los registros
         let items: Listados[] = [];
         //si existen filas
@@ -206,7 +211,7 @@ export class BaseService {
 
     buscarasignatura() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM asignatura', []).then(res => {
         //creo el arreglo para los registros
         let items: Asignaturas[] = [];
         //si existen filas
@@ -230,7 +235,7 @@ export class BaseService {
 
     buscarseccion() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM seccion', []).then(res => {
         //creo el arreglo para los registros
         let items: Secciones[] = [];
         //si existen filas
@@ -254,7 +259,7 @@ export class BaseService {
 
     buscarasig_secc() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM asig_secc', []).then(res => {
         //creo el arreglo para los registros
         let items: AsigSeccs[] = [];
         //si existen filas
@@ -279,7 +284,7 @@ export class BaseService {
 
     buscarrol() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM rol', []).then(res => {
         //creo el arreglo para los registros
         let items: Roles[] = [];
         //si existen filas
@@ -302,7 +307,7 @@ export class BaseService {
 
     buscarusuarios() {
       //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM noticia', []).then(res => {
+      return this.database.executeSql('SELECT * FROM usuario', []).then(res => {
         //creo el arreglo para los registros
         let items: Usuarios [] = [];
         //si existen filas
@@ -337,6 +342,28 @@ export class BaseService {
         this.presentAlert("Registro Realizado");
       })
     }
+
+
+    //registrar usuario
+    registrarUsuario(rut, nombre,apellidos,correo,clave,telefono) {
+      let data = [rut, nombre,apellidos,correo,clave,telefono];
+      return this.database.executeSql('INSERT INTO usuarios(rut, nombre,apellidos,correo,clave,telefono) VALUES (?,?,?,?,?)', data).then(data2 => {
+        this.buscarusuarios();
+        this.presentAlert("Registro Realizado");
+      })
+    }
+
+    //registrar rol
+    registrarRol(nom_rol) {
+      let data = [nom_rol];
+      return this.database.executeSql('INSERT INTO usuarios(nom_rol) VALUES (?)', data).then(data2 => {
+        this.buscarrol();
+        this.presentAlert("Registro Realizado");
+      })
+    }
+
+
+
   
     //modifacion de datos
     modificarNoticia(id, titulo, texto) {
