@@ -24,7 +24,7 @@ export class BaseService {
     asignatura: string = "CREATE TABLE IF NOT EXISTS asignatura(id_asignatura INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL, nombre VARCHAR(50) NOT NULL ;";
     listado: string = "CREATE TABLE IF NOT EXISTS listado(id_listado INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL,FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
     detalle_asist: string = "CREATE TABLE IF NOT EXISTS detalle_asist(id_detalle INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL, FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asistencia) REFERENCES asistencia(id_asistencia);";
-    asistencia: string = "CREATE TABLE IF NOT EXISTS asistencia(id_asistencia INTEGER PRIMARY KEY autoincrement, fecha DATE NOT NULL, hora_inicio VARCHAR(50) NOT NULL, hora_fin VARCHAR(50) NOT NULL, FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc), FOREIGN KEY(id_asistencia) REFERENCES asistencia(id_asistencia);";
+    asistencia: string = "CREATE TABLE IF NOT EXISTS asistencia(id_asistencia INTEGER PRIMARY KEY autoincrement, fecha DATE NOT NULL, hora_inicio VARCHAR(50) NOT NULL, hora_fin VARCHAR(50) NOT NULL, FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
   //observable para manipular los registros de una tabla
     listaUsuarios = new BehaviorSubject([]);
     listaAsistecia = new BehaviorSubject([]);
@@ -362,18 +362,18 @@ export class BaseService {
 
     //registro de datos
     //registrar usuario
-    registrarUsuario(id_usuario, rut, nombre,apellidos,correo,clave,telefono) {
-      let data = [id_usuario ,rut, nombre,apellidos,correo,clave,telefono];
-      return this.database.executeSql('INSERT INTO usuario(rut, nombre,apellidos,correo,clave,telefono) VALUES (?,?,?,?,?,?)', data).then(data2 => {
+    registrarUsuario(id_usuario, rut, nombre,apellidos,correo,clave,telefono,id_rol) {
+      let data = [id_usuario ,rut, nombre,apellidos,correo,clave,telefono,id_rol];
+      return this.database.executeSql('INSERT INTO usuario(rut, nombre,apellidos,correo,clave,telefono,id_rol) VALUES (?,?,?,?,?,?,?)', data).then(data2 => {
         this.buscarusuarios();
         this.presentAlert("Registro Realizado");
       })
     }
 
     //registrar rol
-    registrarRol(id_rol, nom_rol) {
-      let data = [id_rol, nom_rol];
-      return this.database.executeSql('INSERT INTO rol(id_rol ,nom_rol) VALUES (?,?)', data).then(data2 => {
+    registrarRol(id_rol, nom_rol ) {
+      let data = [id_rol, nom_rol ];
+      return this.database.executeSql('INSERT INTO rol(id_rol ,nom_rol ) VALUES (?,?)', data).then(data2 => {
         this.buscarrol();
         this.presentAlert("Registro Realizado");
       })
@@ -389,18 +389,18 @@ export class BaseService {
     }
 
     //registrar listado
-    registrarlistado(id_listado, status) {
-      let data = [id_listado, status];
-      return this.database.executeSql('INSERT INTO listado(id_listado ,status) VALUES (?,?)', data).then(data2 => {
+    registrarlistado(id_listado, status, id_usuario, id_asig_secc) {
+      let data = [id_listado, status, id_usuario, id_asig_secc];
+      return this.database.executeSql('INSERT INTO listado(id_listado ,status, id_usuario, id_asig_secc) VALUES (?,?,?,?)', data).then(data2 => {
         this.buscarlistas();
         this.presentAlert("Registro Realizado");
       })
     }
 
     //registrar asistencia
-    registrarasistencia(id_asistencia, fecha, hora_inicio,hora_fin) {
-      let data = [id_asistencia, fecha, hora_inicio,hora_fin];
-      return this.database.executeSql('INSERT INTO asistencia(id_asistencia ,fecha,hora_inicio, hora_fin) VALUES (?,?,?,?)', data).then(data2 => {
+    registrarasistencia(id_asistencia, fecha, hora_inicio,hora_fin, id_asig_secc) {
+      let data = [id_asistencia, fecha, hora_inicio,hora_fin, id_asig_secc];
+      return this.database.executeSql('INSERT INTO asistencia(id_asistencia ,fecha,hora_inicio, hora_fin, id_asig_secc) VALUES (?,?,?,?,?)', data).then(data2 => {
         this.buscarasistencia();
         this.presentAlert("Registro Realizado");
       })
@@ -416,18 +416,18 @@ export class BaseService {
     }
 
     //registrar Detalle asistencia
-    registrardetalle_asist(id_detalle, status) {
-      let data = [id_detalle, status];
-      return this.database.executeSql('INSERT INTO asignatura(id_detalle, status) VALUES (?,?,?)', data).then(data2 => {
+    registrardetalle_asist(id_detalle, status, id_usuario, id_asistencia) {
+      let data = [id_detalle, status, id_usuario, id_asistencia];
+      return this.database.executeSql('INSERT INTO asignatura(id_detalle, status, id_usuario, id_asistencia) VALUES (?,?,?,?)', data).then(data2 => {
         this.buscardetalle_asist();
         this.presentAlert("Registro Realizado");
       })
     }
 
     //registrar Asig_Secc
-    registrarasig_secc(id_asig_secc, sigla, nombre) {
-      let data = [id_asig_secc, sigla, nombre];
-      return this.database.executeSql('INSERT INTO asig_secc(id_asig_secc, sigla, nombre ) VALUES (?,?,?)', data).then(data2 => {
+    registrarasig_secc(id_asig_secc, sigla, nombre, id_usuario,id_asignatura, id_seccion) {
+      let data = [id_asig_secc, sigla, nombre, id_usuario,id_asignatura, id_seccion ];
+      return this.database.executeSql('INSERT INTO asig_secc(id_asig_secc, sigla, nombre, id_usuario, id_asignatura, id_seccion ) VALUES (?,?,?,?,?,?)', data).then(data2 => {
         this.buscarasig_secc();
         this.presentAlert("Registro Realizado");
       })
