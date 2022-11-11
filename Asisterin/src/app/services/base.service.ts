@@ -111,35 +111,35 @@ export class BaseService {
     dbState() {
       return this.isDBReady.asObservable();
     }
-    //1
+    //1 usuario
     fetchUsuarios(): Observable<Usuarios[]> {
       return this.listaUsuarios.asObservable();
     }
-    //2
+    //2 asig_secc
     fetchAsig_asecc(): Observable<AsigSeccs[]> {
       return this.listaAsig_secc.asObservable();
     }
-    //3
+    //3 asistencia
     fetchAsistencias(): Observable<Asistencias[]> {
       return this.listaAsistecia.asObservable();
     }
-    //4
+    //4 rol
     fetchRoles(): Observable<Roles[]> {
       return this.listaRol.asObservable();
     }
-    //5
+    //5 detalle asist
     fetchDetalle_asists (): Observable<DetalleAsists[]> {
       return this.listaDetalle_asist.asObservable();
     }
-    //6
+    //6 listas
     fetchListados (): Observable<Listados[]> {
       return this.listaListado.asObservable();
     }
-    //7
+    //7 secciones
     fetchSecciones (): Observable<Secciones[]> {
       return this.listaSecciones.asObservable();
     }
-    //8
+    //8 asignatura
     fetchAsignaturas (): Observable<Asignaturas[]> {
       return this.listAsignatura.asObservable();
     }
@@ -360,7 +360,7 @@ export class BaseService {
       })
     }
 
-
+    //registro de datos
     //registrar usuario
     registrarUsuario(id_usuario, rut, nombre,apellidos,correo,clave,telefono) {
       let data = [id_usuario ,rut, nombre,apellidos,correo,clave,telefono];
@@ -425,31 +425,170 @@ export class BaseService {
     }
 
     //registrar Asig_Secc
-    registrarasig_secc(id_asig_secc) {
-      let data = [id_asig_secc];
-      return this.database.executeSql('INSERT INTO asig_secc(id_asig_secc ) VALUES (?)', data).then(data2 => {
+    registrarasig_secc(id_asig_secc, sigla, nombre) {
+      let data = [id_asig_secc, sigla, nombre];
+      return this.database.executeSql('INSERT INTO asig_secc(id_asig_secc, sigla, nombre ) VALUES (?,?,?)', data).then(data2 => {
         this.buscarasig_secc();
         this.presentAlert("Registro Realizado");
       })
     }
 
-+
-
   
+
+
     //modifacion de datos
-    modificarNoticia(id, titulo, texto) {
-      let data = [titulo, texto, id];
-      return this.database.executeSql('UPDATE noticia SET titulo = ?, texto = ? WHERE id_noticia = ?', data).then(data2 => {
-        this.buscarNoticias();
+    //modificar usuarios
+    modificarUsuario(id_usuario, rut, nombre,apellidos,correo,clave,telefono) {
+      let data = [id_usuario, rut, nombre,apellidos,correo,clave,telefono];
+      return this.database.executeSql('UPDATE usuario SET rut = ?, nombre = ?, apellidos = ?, correo = ?, clave = ?, telefono = ?  WHERE id_usuario = ?', data).then(data2 => {
+        this.buscarusuarios();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    }  
+
+    //modificar rol
+    modificarrol(id_rol, nom_rol) {
+      let data = [id_rol, nom_rol];
+      return this.database.executeSql('UPDATE rol SET nom_rol = ?  WHERE id_rol = ?', data).then(data2 => {
+        this.buscarrol();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    }  
+
+    //modificar seccion
+    modificarseccion(id_seccion, sigla) {
+      let data = [id_seccion, sigla];
+      return this.database.executeSql('UPDATE seccion SET sigla = ?  WHERE id_seccion = ?', data).then(data2 => {
+        this.buscarseccion();
         this.presentAlert("Registro Modificado");
       })
   
     }
+    
+    //modificar listado
+    modificarlistado(id_listado, status) {
+      let data = [id_listado, status];
+      return this.database.executeSql('UPDATE listado SET status = ?  WHERE id_listado = ?', data).then(data2 => {
+        this.buscarlistas();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    } 
+    
+    //modificar asistencia
+    modificarasistencia(id_asistencia, fecha, hora_inicio,hora_fin) {
+      let data = [id_asistencia, fecha, hora_inicio,hora_fin];
+      return this.database.executeSql('UPDATE asistencia SET fecha = ?, hora_inicio = ?, hora_fin = ?  WHERE id_asistencia = ?', data).then(data2 => {
+        this.buscarasistencia();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    } 
+
+    //modificar asignatura
+    modificarasignatura(id_asignatura, sigla, nombre) {
+      let data = [id_asignatura, sigla, nombre];
+      return this.database.executeSql('UPDATE asignatura SET sigla = ?, nombre = ?  WHERE id_asignatura = ?', data).then(data2 => {
+        this.buscarasistencia();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    } 
+
+    //modificar asignatura
+    modificardetalle_asist(id_detalle, status) {
+      let data = [id_detalle, status];
+      return this.database.executeSql('UPDATE detalle_asist SET status = ?  WHERE id_detalle = ?', data).then(data2 => {
+        this.buscarasistencia();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    } 
+
+    //modificar asig_secc
+    modificarasig_Secc(id_asig_secc, sigla, nombre) {
+      let data = [id_asig_secc, sigla, nombre];
+      return this.database.executeSql('UPDATE asig_secc SET sigla = ?, nombre = ?  WHERE id_asig_secc = ?', data).then(data2 => {
+        this.buscarasistencia();
+        this.presentAlert("Registro Modificado");
+      })
+  
+    } 
+
+
+
+
   
     //eliminar datos
-    eliminarNoticia(id){
-      return this.database.executeSql('DELETE FROM noticia WHERE id_noticia = ?',[id]).then(data2=>{
-        this.buscarNoticias();
+    //eliminar usuario
+    eliminarusuario(id){
+      return this.database.executeSql('DELETE FROM usuario WHERE id_usuario = ?',[id]).then(data2=>{
+        this.buscarusuarios();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar rol
+    eliminarrol(id){
+      return this.database.executeSql('DELETE FROM rol WHERE id_rol = ?',[id]).then(data2=>{
+        this.buscarrol();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar asig_secc
+    eliminarasig_secc(id){
+      return this.database.executeSql('DELETE FROM asig_secc WHERE id_asig_secc = ?',[id]).then(data2=>{
+        this.buscarasig_secc();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar seccion
+    eliminarseccion(id){
+      return this.database.executeSql('DELETE FROM seccion WHERE id_seccion = ?',[id]).then(data2=>{
+        this.buscarseccion();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar asignatura
+    eliminarasignaturan(id){
+      return this.database.executeSql('DELETE FROM asignatura WHERE id_asignatura = ?',[id]).then(data2=>{
+        this.buscarasignatura();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar listas
+    eliminaralistas(id){
+      return this.database.executeSql('DELETE FROM listado WHERE id_listado = ?',[id]).then(data2=>{
+        this.buscarlistas();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar detalle_asist
+    eliminardetalle_asist(id){
+      return this.database.executeSql('DELETE FROM detalle_asist WHERE id_detalle = ?',[id]).then(data2=>{
+        this.buscardetalle_asist();
+        this.presentAlert("Registro Eliminado");
+      })
+  
+    }
+
+    //eliminar detalle_asist
+    eliminarasistencia(id){
+      return this.database.executeSql('DELETE FROM asistencia WHERE id_asistencia = ?',[id]).then(data2=>{
+        this.buscarasistencia();
         this.presentAlert("Registro Eliminado");
       })
   
