@@ -10,7 +10,7 @@
   <form [formGroup]="formularioLogin">
     <ion-item>
       <ion-label position="floating"> Usuario </ion-label>
-      <ion-input formControlName="usuario"></ion-input>
+      <ion-input [(ngModel)]="usuario"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -20,6 +20,6 @@
     
   </form>
   <ion-button expand="block" (click)="login()">Iniciar Sesion</ion-button>
-  <ion-button expand="block"[routerLink]="['/ticket-al']"> <label style="font-size: 12px;" >¿Olvidaste tu Contraseña?</label></ion-button>
+  <ion-button expand="block"(click)="login()"> <label style="font-size: 12px;" >¿Olvidaste tu Contraseña?</label></ion-button>
 </ion-card> 
 </ion-content>
