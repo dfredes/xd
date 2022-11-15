@@ -40,6 +40,7 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     this.api.getUsuario().subscribe((res)=>{
       this.users = res;
+      this.base.presentAlert(JSON.stringify (this.users))
       //console.log(res)
       for(let x of this.users){
         //this.servicioBD.presentAlert(x.nombre);
@@ -54,11 +55,11 @@ export class InicioPage implements OnInit {
 
   login(){
      for(let i of this.users){
-      if (i.id_rol = 2){
-        this.router.navigate(['/alum'])
+      if (i.id_rol = 1){
+        this.router.navigate(['/prof'])
         }
         else{
-          this.router.navigate(['/prof'])
+          this.router.navigate(['/alum'])
         } 
       }
       

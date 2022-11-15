@@ -17,12 +17,12 @@ import { Usuarios } from './usuarios';
 export class BaseService {
   public database: SQLiteObject;
   //variables para crear tablas e insertar registros por defecto en tablas
-    usuario: string = "CREATE TABLE IF NOT EXISTS usuario(id_usuario INTEGER PRIMARY KEY autoincrement, rut VARCHAR(50) NULL , nombre VARCHAR(50) NOT NULL, apellidos VARCHAR(50) NOT NULL, correo VARCHAR(50)  NULL), clave VARCHAR(50) NOT NULL, telefono INTEGER  NULL, FOREIGN KEY(id_rol) REFERENCES rol(id_rol);";
+    usuario: string = "CREATE TABLE IF NOT EXISTS usuario(id_usuario INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50) NOT NULL, clave VARCHAR(50) NOT NULL,  id_rol INTEGER NOT NULL);";
     //rol: string = "CREATE TABLE IF NOT EXISTS rol(id_rol INTEGER PRIMARY KEY autoincrement, nom_rol VARCHAR(50) NOT NULL;";
     asig_secc: string = "CREATE TABLE IF NOT EXISTS asig_secc(id_asig_secc INTEGER PRIMARY KEY autoincrement, FOREIGN KEY(id_asignatura) REFERENCES asignatura(id_asignatura), FOREIGN KEY(id_seccion) REFERENCES seccion(id_seccion),FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario);";
     seccion: string = "CREATE TABLE IF NOT EXISTS seccion(id_seccion INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL ;";
     asignatura: string = "CREATE TABLE IF NOT EXISTS asignatura(id_asignatura INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL, nombre VARCHAR(50) NOT NULL ;";
-    listado: string = "CREATE TABLE IF NOT EXISTS listado(id_listado INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL,FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
+    //listado: string = "CREATE TABLE IF NOT EXISTS listado(id_listado INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL,FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
     detalle_asist: string = "CREATE TABLE IF NOT EXISTS detalle_asist(id_detalle INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL, FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asistencia) REFERENCES asistencia(id_asistencia);";
     asistencia: string = "CREATE TABLE IF NOT EXISTS asistencia(id_asistencia INTEGER PRIMARY KEY autoincrement, fecha DATE NOT NULL, hora_inicio VARCHAR(50) NOT NULL, hora_fin VARCHAR(50) NOT NULL, FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
   //observable para manipular los registros de una tabla
@@ -75,10 +75,10 @@ export class BaseService {
       try {
         //ejecuto creacion de tablas
         await this.database.executeSql(this.usuario, []);
-        await this.database.executeSql(this.rol, []);
+        //await this.database.executeSql(this.rol, []);
         await this.database.executeSql(this.asig_secc, []);
         await this.database.executeSql(this.seccion, []);
-        await this.database.executeSql(this.listado, []);
+        //await this.database.executeSql(this.listado, []);
         await this.database.executeSql(this.asignatura, []);
         await this.database.executeSql(this.detalle_asist, []);
         await this.database.executeSql(this.asistencia, []);
@@ -90,9 +90,9 @@ export class BaseService {
         this.buscarasig_secc();
         this.buscarasistencia();
         this.buscarasignatura();
-        this.buscarlistas();
+        //this.buscarlistas();
         this.buscardetalle_asist();
-        this.buscarrol();
+        //this.buscarrol();
         //modificar el observable de el status de la BD
         this.isDBReady.next(true);
   
@@ -210,7 +210,7 @@ export class BaseService {
 
 
 
-    buscarlistas() {
+    /*buscarlistas() {
       //ejecuto la consulta
       return this.database.executeSql('SELECT * FROM listado', []).then(res => {
         //creo el arreglo para los registros
@@ -232,7 +232,7 @@ export class BaseService {
         this.listaListado.next(items);
   
       })
-    }
+    }*/
 
 
 
@@ -310,7 +310,7 @@ export class BaseService {
     }
 
 
-    buscarrol() {
+    /*buscarrol() {
       //ejecuto la consulta
       return this.database.executeSql('SELECT * FROM rol', []).then(res => {
         //creo el arreglo para los registros
@@ -330,7 +330,7 @@ export class BaseService {
         this.listaRol.next(items);
   
       })
-    }
+    }*/
 
 
     buscarusuarios() {
@@ -344,12 +344,8 @@ export class BaseService {
           for (var i = 0; i < res.rows.length; i++) {
             items.push({
               id_usuario: res.rows.item(i).id_usuario,
-              rut: res.rows.item(i).rut,
               nombre: res.rows.item(i).nombre,
-              apellidos: res.rows.item(i).apellidos,
-              correo: res.rows.item(i).correo,
               clave: res.rows.item(i).clave,
-              telefono: res.rows.item(i).telefono,
               id_rol: res.rows.item(i).id_rol
             })
           }
@@ -362,22 +358,22 @@ export class BaseService {
 
     //registro de datos
     //registrar usuario
-    registrarUsuario(id_usuario, rut, nombre,apellidos,correo,clave,telefono,id_rol) {
-      let data = [id_usuario ,rut, nombre,apellidos,correo,clave,telefono,id_rol];
-      return this.database.executeSql('INSERT INTO usuario(rut, nombre,apellidos,correo,clave,telefono,id_rol) VALUES (?,?,?,?,?,?,?)', data).then(data2 => {
+    registrarUsuario(id_usuario, nombre ,clave,id_rol) {
+      let data = [id_usuario , nombre,clave,id_rol];
+      return this.database.executeSql('INSERT INTO OR IGNORE usuario(id_usuario ,nombre,clave,id_rol) VALUES (?,?,?,?)', data).then(data2 => {
         this.buscarusuarios();
         this.presentAlert("Registro Realizado");
       })
     }
 
-    //registrar rol
+    /*registrar rol
     registrarRol(id_rol, nom_rol ) {
       let data = [id_rol, nom_rol ];
       return this.database.executeSql('INSERT INTO rol(id_rol ,nom_rol ) VALUES (?,?)', data).then(data2 => {
         this.buscarrol();
         this.presentAlert("Registro Realizado");
       })
-    }
+    }*/
 
     //registrar seccion
     registrarSeccion(id_seccion, sigla) {
@@ -388,14 +384,14 @@ export class BaseService {
       })
     }
 
-    //registrar listado
+    /*registrar listado
     registrarlistado(id_listado, status, id_usuario, id_asig_secc) {
       let data = [id_listado, status, id_usuario, id_asig_secc];
       return this.database.executeSql('INSERT INTO listado(id_listado ,status, id_usuario, id_asig_secc) VALUES (?,?,?,?)', data).then(data2 => {
         this.buscarlistas();
         this.presentAlert("Registro Realizado");
       })
-    }
+    }*/
 
     //registrar asistencia
     registrarasistencia(id_asistencia, fecha, hora_inicio,hora_fin, id_asig_secc) {
@@ -438,16 +434,16 @@ export class BaseService {
 
     //modifacion de datos
     //modificar usuarios
-    modificarUsuario(id_usuario, rut, nombre,apellidos,correo,clave,telefono) {
-      let data = [id_usuario, rut, nombre,apellidos,correo,clave,telefono];
-      return this.database.executeSql('UPDATE usuario SET rut = ?, nombre = ?, apellidos = ?, correo = ?, clave = ?, telefono = ?  WHERE id_usuario = ?', data).then(data2 => {
+    modificarUsuario(id_usuario, nombre,clave) {
+      let data = [id_usuario, nombre,clave];
+      return this.database.executeSql('UPDATE usuario SET nombre = ?, clave = ?  WHERE id_usuario = ?', data).then(data2 => {
         this.buscarusuarios();
         this.presentAlert("Registro Modificado");
       })
   
     }  
 
-    //modificar rol
+    /*modificar rol
     modificarrol(id_rol, nom_rol) {
       let data = [id_rol, nom_rol];
       return this.database.executeSql('UPDATE rol SET nom_rol = ?  WHERE id_rol = ?', data).then(data2 => {
@@ -455,7 +451,7 @@ export class BaseService {
         this.presentAlert("Registro Modificado");
       })
   
-    }  
+    }*/
 
     //modificar seccion
     modificarseccion(id_seccion, sigla) {
@@ -467,7 +463,7 @@ export class BaseService {
   
     }
     
-    //modificar listado
+    /*modificar listado
     modificarlistado(id_listado, status) {
       let data = [id_listado, status];
       return this.database.executeSql('UPDATE listado SET status = ?  WHERE id_listado = ?', data).then(data2 => {
@@ -475,7 +471,7 @@ export class BaseService {
         this.presentAlert("Registro Modificado");
       })
   
-    } 
+    }*/
     
     //modificar asistencia
     modificarasistencia(id_asistencia, fecha, hora_inicio,hora_fin) {
@@ -531,14 +527,14 @@ export class BaseService {
   
     }
 
-    //eliminar rol
+    /*eliminar rol
     eliminarrol(id){
       return this.database.executeSql('DELETE FROM rol WHERE id_rol = ?',[id]).then(data2=>{
         this.buscarrol();
         this.presentAlert("Registro Eliminado");
       })
   
-    }
+    }*/
 
     //eliminar asig_secc
     eliminarasig_secc(id){
@@ -567,14 +563,14 @@ export class BaseService {
   
     }
 
-    //eliminar listas
+    /*eliminar listas
     eliminaralistas(id){
       return this.database.executeSql('DELETE FROM listado WHERE id_listado = ?',[id]).then(data2=>{
         this.buscarlistas();
         this.presentAlert("Registro Eliminado");
       })
   
-    }
+    }*/
 
     //eliminar detalle_asist
     eliminardetalle_asist(id){
