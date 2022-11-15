@@ -7,6 +7,7 @@ import{
 }from'@angular/forms';
 import { Route, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../api.service';
+import { BaseService } from '../services/base.service';
 
 
 
@@ -26,7 +27,7 @@ export class InicioPage implements OnInit {
 
   formularioLogin: FormGroup;
 
-  constructor(public fb: FormBuilder, public api:ApiService, private router:Router) {
+  constructor(public fb: FormBuilder, private base: BaseService, public api: ApiService, private router:Router) {
 
     this.formularioLogin = this.fb.group({
       'usuario': new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -37,14 +38,18 @@ export class InicioPage implements OnInit {
   }
 
   ngOnInit() {
-    this.api.getUsuario().subscribe((res) => {
+    this.api.getUsuario().subscribe((res)=>{
       this.users = res;
-  
-    }, (error) => {
-      console.log(error);
-    
+      //console.log(res)
+      for(let x of this.users){
+        //this.servicioBD.presentAlert(x.nombre);
+        this.base.registrarUsuario(x.id, x.nombre,x.clave, x.id_rol);
+      }
+     
     });
-    
+
+     
+
   }
 
   login(){
