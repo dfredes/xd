@@ -17,6 +17,7 @@ export class ApiService {
   }
 
   apiURL = 'https://my-json-server.typicode.com/victorrosendo/repoUsuariosRamos';
+  apiURLsec= 'https://my-json-server.typicode.com/victorrosendo/repoSeccionAsigSeccion';
 
   constructor(private http:HttpClient) { }
 
@@ -28,3 +29,5 @@ export class ApiService {
   }
 
 }
+
+

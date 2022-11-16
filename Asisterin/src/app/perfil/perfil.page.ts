@@ -10,6 +10,7 @@ export class PerfilPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //hacer aqui la wea del camara
   }
 
 }

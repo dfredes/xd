@@ -30,7 +30,7 @@ export class InicioPage implements OnInit {
   constructor(public fb: FormBuilder, private base: BaseService, public api: ApiService, private router:Router) {
 
     this.formularioLogin = this.fb.group({
-      'usuario': new FormControl('', [Validators.required, Validators.minLength(4)]),
+      'usuario': new FormControl("", [Validators.required, Validators.minLength(4)]),
       'contrasena': new FormControl("",Validators.required)
     }
     )
