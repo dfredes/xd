@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'inicio',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -82,6 +82,10 @@ const routes: Routes = [
   {
     path: 'otram',
     loadChildren: () => import('./otram/otram.module').then( m => m.OtramPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
 ];
 
