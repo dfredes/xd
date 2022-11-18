@@ -25,6 +25,10 @@ export class InicioPage implements OnInit {
     id_rol: ''
   }]
 
+  usuario= "";
+  contrasena="";
+
+
   formularioLogin: FormGroup;
 
   constructor(public fb: FormBuilder, private base: BaseService, public api: ApiService, private router:Router) {
@@ -55,12 +59,37 @@ export class InicioPage implements OnInit {
 
   login(){
      for(let i of this.users){
-      if (i.id_rol = 1){
+
+
+
+      if (i.nombre =! this.usuario){
+        this.base.presentAlert("datos incorrectos")
+
+
+      }else{
+        if(i.clave =! this.contrasena){
+          
+          this.base.presentAlert("datos incorrectos")
+        }else{
+          if(i.id_rol = 1){
+            this.router.navigate(['/prof'])
+          }else{
+            this.router.navigate(['/alum'])
+          }
+        }
+      }
+
+
+
+
+
+
+      /*if (i.id_rol = 1){
         this.router.navigate(['/prof'])
         }
         else{
           this.router.navigate(['/alum'])
-        } 
+        }*/ 
       }
       
 

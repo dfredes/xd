@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
+
 @Component({
   selector: 'app-escaner',
   templateUrl: './escaner.page.html',
@@ -40,12 +41,12 @@ export class EscanerPage implements OnDestroy {
         }
         await BarcodeScanner.hideBackground();
         document.querySelector('body').classList.add('scanner-active');
-        this.content_visibility = "hidden";
+        this.content_visibility = 'hidden';
         const result = await BarcodeScanner.startScan();
         console.log(result);
         BarcodeScanner.showBackground();
         document.querySelector('body').classList.remove('scanner-active');
-        this.content_visibility = "";
+        this.content_visibility = '';
         if(result?.hasContent) {
           this.scannedResult = result.content;
           console.log(this.scannedResult);
@@ -63,8 +64,8 @@ export class EscanerPage implements OnDestroy {
       
       BarcodeScanner.showBackground();
       BarcodeScanner.stopScan();
-      document.querySelector('body').classList.remove('scanner-active')
-      this.content_visibility = "";;
+      document.querySelector('body').classList.remove('scanner-active');
+      this.content_visibility = '';
     }
 
 
