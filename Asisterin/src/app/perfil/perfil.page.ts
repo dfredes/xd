@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
 
 @Component({
@@ -17,34 +18,6 @@ export class PerfilPage implements OnInit {
    
 
     // Set the handler to run every time we take a picture
-
-
-
-    
-
-    // take a snap shot
-    
-
-
-    // Switch camera
-
-    // set color effect to negative
-
-    // Stop the camera preview
-
-
-
-       
-        
-        
-      }
-
-
-
-
-
-
-
   tomarFoto(){
     const options: CameraOptions = {
       quality: 100,
