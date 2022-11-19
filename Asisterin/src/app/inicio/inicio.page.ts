@@ -31,6 +31,18 @@ export class InicioPage implements OnInit {
     nombre: '',
   }]
 
+  seccion: any = [{
+    id_seccion: '',
+    sigla: '',
+  }]
+
+  Asigsecci: any = [{
+    id_asig_secc: '',
+    id_asignatur: '',
+    id_seccion: '',
+    id_usuario: '',
+  }]
+
   usuario= "";
   contrasena="";
 
@@ -61,18 +73,29 @@ export class InicioPage implements OnInit {
      
     });
 
-    this.api.getUsuario().subscribe((res)=>{
-      this.users = res;
-      this.base.presentAlert(JSON.stringify (this.users))
+    this.api.getSeccion().subscribe((res)=>{
+      this.seccion = res;
+      this.base.presentAlert(JSON.stringify (this.seccion))
       //console.log(res)
-      for(let x of this.users){
+      for(let x of this.seccion){
         //this.servicioBD.presentAlert(x.nombre);
-        this.base.registrarUsuario(x.id, x.nombre,x.clave, x.id_rol);
+        this.base.registrarSeccion(x.id_seccion, x.sigla);
       }
      
     });
 
-    this.api.getUsuario().subscribe((res)=>{
+    this.api.getAsigsecci().subscribe((res)=>{
+      this.Asigsecci = res;
+      this.base.presentAlert(JSON.stringify (this.Asigsecci))
+      //console.log(res)
+      for(let x of this.Asigsecci){
+        //this.servicioBD.presentAlert(x.nombre);
+        this.base.registrarasig_secc(x.id_asig_secc,  x.id_usuario,x.id_asignatura, x.id_seccion);
+      }
+     
+    });
+
+    this.api.getRamos().subscribe((res)=>{
       this.ramo = res;
       this.base.presentAlert(JSON.stringify (this.ramo))
       //console.log(res)

@@ -405,7 +405,7 @@ export class BaseService {
     //registrar asignatura
     registrarasignatura(id_asignatura, sigla, nombre) {
       let data = [id_asignatura, sigla, nombre];
-      return this.database.executeSql('INSERT OR IGNORE INTO  asignatura(id_asignatura, sigla ,nombre) VALUES (?,?,?,?)', data).then(data2 => {
+      return this.database.executeSql('INSERT OR IGNORE INTO  asignatura(id_asignatura, sigla ,nombre) VALUES (?,?,?)', data).then(data2 => {
         this.buscarasignatura();
         this.presentAlert("Registro Realizado");
       })
@@ -421,9 +421,9 @@ export class BaseService {
     }
 
     //registrar Asig_Secc
-    registrarasig_secc(id_asig_secc, sigla, nombre, id_usuario,id_asignatura, id_seccion) {
-      let data = [id_asig_secc, sigla, nombre, id_usuario,id_asignatura, id_seccion ];
-      return this.database.executeSql('INSERT OR IGNORE INTO  asig_secc(id_asig_secc, sigla, nombre, id_usuario, id_asignatura, id_seccion ) VALUES (?,?,?,?,?,?)', data).then(data2 => {
+    registrarasig_secc(id_asig_secc,  id_usuario,id_asignatura, id_seccion) {
+      let data = [id_asig_secc,  id_usuario,id_asignatura, id_seccion ];
+      return this.database.executeSql('INSERT OR IGNORE INTO  asig_secc(id_asig_secc,   id_usuario, id_asignatura, id_seccion ) VALUES (?,?,?,?)', data).then(data2 => {
         this.buscarasig_secc();
         this.presentAlert("Registro Realizado");
       })
