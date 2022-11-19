@@ -3,6 +3,6 @@ export class Usuarios {
     nombre: string;
     clave: string;
     id_rol: number;
-
+    
 
 }
