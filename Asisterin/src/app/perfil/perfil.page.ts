@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
+import { CamaraService } from '../services/camara.service';
 
 
 @Component({
@@ -9,38 +9,15 @@ import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 })
 export class PerfilPage implements OnInit {
 
-  foto:any;
-
-  constructor(private camera: Camera) { }
+  constructor(private apicamara: CamaraService) { }
 
   ngOnInit() {
 
-   
-
-    // Set the handler to run every time we take a picture
-  tomarFoto(){
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    }}
-
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      this.foto = 'data:image/jpeg;base64,' + imageData;
-      }, (err) => {
-      // Handle error
-      });
-
-
-
-
-
-
   }
 
+  foto(){
+    this.apicamara.fotico();
+  }
 
 
 
