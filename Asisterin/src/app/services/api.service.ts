@@ -28,6 +28,30 @@ export class ApiService {
     );
   }
 
+  getRamos():Observable<any>{
+    return this.http.get(this.apiURL+'/ramos/').pipe(
+      retry(3)
+    );
+  }
+
+  getSeccion():Observable<any>{
+    return this.http.get(this.apiURLsec+'/seccion/').pipe(
+      retry(3)
+    );
+  }
+
+
+  getAsigsecci ():Observable<any>{
+    return this.http.get(this.apiURLsec+'/asigsecci/').pipe(
+      retry(3)
+    );
+  }
+
+  
+   
+
+
+
 }
 
 
