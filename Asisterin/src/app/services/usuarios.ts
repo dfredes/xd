@@ -7,6 +7,7 @@ export class Usuarios {
     nombre_r: string;
     telefono: number;
     correo: string;
+    direccion: string;
     
 
 }
