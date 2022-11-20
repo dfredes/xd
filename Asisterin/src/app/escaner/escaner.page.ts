@@ -46,7 +46,7 @@ export class EscanerPage implements OnDestroy {
         console.log(result);
         BarcodeScanner.showBackground();
         document.querySelector('body').classList.remove('scanner-active');
-        this.content_visibility = '';
+        this.content_visibility = 'nothidden';
         if(result?.hasContent) {
           this.scannedResult = result.content;
           console.log(this.scannedResult);
@@ -65,7 +65,7 @@ export class EscanerPage implements OnDestroy {
       BarcodeScanner.showBackground();
       BarcodeScanner.stopScan();
       document.querySelector('body').classList.remove('scanner-active');
-      this.content_visibility = '';
+      this.content_visibility = 'nothidden';
     }
 
 
