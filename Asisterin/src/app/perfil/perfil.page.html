@@ -15,6 +15,12 @@
     </ion-card-header>
   
     <ion-card-content>
+
+      <ion-avatar>
+        <img alt="src\assets\icon\no_foto" [src]="image" *ngIf="image" />
+        <img src="" *ngIf="!image" />
+        <ion-icon name="camera-outline" (click)="fotico()"></ion-icon>
+      </ion-avatar>
       
       <ion-list>
         <img [src]="image" *ngIf="image" />
@@ -34,7 +40,8 @@
       <ion-item>
         <ion-label>Correo: feli.albornoz@duocuc.cl</ion-label>
       </ion-item>
-      <ion-button expand="block"(click)="fotico()"> <label style="font-size: 12px;" >foto</label></ion-button>
+      <ion-button expand="block"(click)="fotico()"> <label style="font-size: 12px;" > <ion-icon name="camera-outline"></ion-icon>foto</label></ion-button>
+      <ion-button  class="top-20" size="default" expand="full" color="tertiary" [routerLink]="['/editar-usuario']" > <ion-icon name="qr-code-outline"></ion-icon>Modificar</ion-button>
     </ion-card>
     
      
