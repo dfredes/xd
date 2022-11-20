@@ -17,7 +17,8 @@
     <ion-card-content>
       
       <ion-list>
-        <ion-img *ngIf="image" [src]="image" alt="image"></ion-img>
+        <img [src]="image" *ngIf="image" />
+        <img src="" *ngIf="!image" />
         <ion-card>
       <ion-item>
         
@@ -33,7 +34,7 @@
       <ion-item>
         <ion-label>Correo: feli.albornoz@duocuc.cl</ion-label>
       </ion-item>
-      <ion-button expand="block"(click)="foto()"> <label style="font-size: 12px;" >foto</label></ion-button>
+      <ion-button expand="block"(click)="fotico()"> <label style="font-size: 12px;" >foto</label></ion-button>
     </ion-card>
     
      

@@ -3,6 +3,10 @@ export class Usuarios {
     nombre: string;
     clave: string;
     id_rol: number;
+    imagen: any;
+    nombre_r: string;
+    telefono: number;
+    correo: string;
     
 
 }
