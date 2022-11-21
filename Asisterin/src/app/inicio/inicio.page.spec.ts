@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 import { IonicModule } from '@ionic/angular';
+import { AppComponent } from '../app.component';
+
 
 import { InicioPage } from './inicio.page';
 
@@ -25,12 +27,10 @@ describe('InicioPage', () => {
     const app=fixture.componentInstance
     fixture.detectChanges
 
-    let nombre_r = app.form.controls['nombre_r']
-    let telefono = app.form.controls['telefono']
-
-    usuario.setValues('')
-    constraseña.setValues('')
+    let users = app.form.controls['']
+    
     expect(app.form.invalid).toBeFalse
+
   });
 
   it('should create', () => {

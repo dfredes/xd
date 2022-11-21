@@ -28,10 +28,15 @@ describe('EditarUsuarioPage', () => {
 
     let nombre_r = app.form.controls['nombre_r']
     let telefono = app.form.controls['telefono']
+    let direccion = app.form.controls['direccion']
+    let correo = app.form.controls['correo']
 
-    usuario.setValues('')
-    constraseña.setValues('')
-    expect(app.form.invalid).toBeFalse
+    
+    nombre_r.setValues('')
+    telefono.setValues('')
+    direccion.setValues('')
+    correo.setValues('')
+    expect(component).toBeTruthy();
   });
 
 
