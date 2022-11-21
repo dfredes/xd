@@ -11,12 +11,34 @@ import { BaseService } from '../services/base.service';
 })
 export class PerfilPage implements OnInit {
 
-  
+  listaUsers: any = [{
+    id_usuario: '',
+    nombre: '',
+    clave: '',
+    id_rol: '',
+    nombre_r:'',
+    apellido:'',
+    correo:'',
+    foto:'',
+    telefono:'',
+    direccion:''
+  }];
   image:any;
 
   constructor(private camera: Camera, private base: BaseService) { }
 
   ngOnInit() {
+    this.base.dbState().subscribe((res) => {
+      if (res) {
+
+        this.base.buscarusuarios();
+        //subscribimos al observable que hace el select en la tabla noticias
+        this.base.fetchUsuarios().subscribe((item) => {
+          //guardamos estos cambios de información en una variable propia de este ts
+          this.listaUsers = item;
+        })
+      }
+    })
 
   }
 
@@ -42,6 +64,8 @@ export class PerfilPage implements OnInit {
 
 
   }
+
+
 
   /*foto(){
     this.apicamara.fotico();

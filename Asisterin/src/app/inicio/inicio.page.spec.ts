@@ -20,6 +20,19 @@ describe('InicioPage', () => {
     fixture.detectChanges();
   }));
 
+  it('retornar ', () =>{
+    const fixture = TestBed.createComponent(AppComponent)
+    const app=fixture.componentInstance
+    fixture.detectChanges
+
+    let nombre_r = app.form.controls['nombre_r']
+    let telefono = app.form.controls['telefono']
+
+    usuario.setValues('')
+    constraseña.setValues('')
+    expect(app.form.invalid).toBeFalse
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

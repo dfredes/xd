@@ -10,13 +10,11 @@
 <ion-content class="background" padding>
   
   <ion-card>
-    <ion-card-header>
-      <ion-card-title></ion-card-title>
-    </ion-card-header>
+    
   
-    <ion-card-content>
+    
 
-      <ion-avatar>
+    <ion-avatar>
         <img alt="src\assets\icon\no_foto" [src]="image" *ngIf="image" />
         <img src="" *ngIf="!image" />
         <ion-icon name="camera-outline" (click)="fotico()"></ion-icon>
@@ -25,28 +23,25 @@
       <ion-list>
         <img [src]="image" *ngIf="image" />
         <img src="" *ngIf="!image" />
-        <ion-card>
-      <ion-item>
-        
-        <ion-label>Nombre: Felipe Albornoz</ion-label>
-      </ion-item>
-        </ion-card>
-        <ion-card>
-      <ion-item>
-        <ion-label>Rut: 21.125.098-K </ion-label>
-      </ion-item>
-    </ion-card>
-    <ion-card>
-      <ion-item>
-        <ion-label>Correo: feli.albornoz@duocuc.cl</ion-label>
-      </ion-item>
-      <ion-button expand="block"(click)="fotico()"> <label style="font-size: 12px;" > <ion-icon name="camera-outline"></ion-icon>foto</label></ion-button>
-      <ion-button  class="top-20" size="default" expand="full" color="tertiary" [routerLink]="['/editar-usuario']" > <ion-icon name="create-outline"></ion-icon>Modificar</ion-button>
-    </ion-card>
+      </ion-list>  
+
+
+      <ion-item><label>Nombre: {{nombre_r}}</label></ion-item>
+      <ion-item><label>Rut: {{rut}}</label></ion-item>
+      <ion-item><label>Direccion: {{direccion}}</label></ion-item>
+      <ion-item><label>Telefono: {{telefono}}</label></ion-item>
+      <ion-item><label>Correo: {{correo}}</label></ion-item>
+
+      
+    <ion-button expand="block"(click)="fotico()"> <label style="font-size: 12px;" > <ion-icon name="camera-outline"></ion-icon>foto</label></ion-button>
+    <ion-button  class="top-20" size="default" expand="full" color="tertiary" [routerLink]="['/editar-usuario']" > <ion-icon name="create-outline"></ion-icon>Modificar</ion-button>
+    
+
+
     
      
-    </ion-list>
-    </ion-card-content>
+    
+    
   </ion-card>
 
 </ion-content>

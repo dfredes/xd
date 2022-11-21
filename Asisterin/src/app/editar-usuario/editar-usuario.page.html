@@ -1,16 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>editar_usuario</ion-title>
+  <ion-toolbar color="primary">
+    <ion-back-button slot="start">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-back-button>
+    <ion-title class="centro"></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="background" padding>
   <ionic-card>
     <ion-list>
-      
-    
-      
-    
+
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input [(ngModel)]="nombre_r" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Rut</ion-label>
+        <ion-input [(ngModel)]="rut" type="text"></ion-input>
+      </ion-item>
+
       <ion-item>
         <ion-label>direccion</ion-label>
         <ion-input [(ngModel)]="direccion" type="text"></ion-input>
