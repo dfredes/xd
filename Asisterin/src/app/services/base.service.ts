@@ -17,13 +17,13 @@ import { Usuarios } from './usuarios';
 export class BaseService {
   public database: SQLiteObject;
   //variables para crear tablas e insertar registros por defecto en tablas
-    usuario: string ="CREATE TABLE IF NOT EXISTS usuario(id_usuario INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50) NOT NULL, clave VARCHAR(50) NOT NULL,  id_rol INTEGER NOT NULL, imagen BLOB, nombre_r VARCHAR(50), telefono INTEGER, correo VARCHAR(50), direccion VARCHAR(50));";
+  usuario: string ="CREATE TABLE IF NOT EXISTS usuario(id_usuario INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50) NOT NULL, clave VARCHAR(50) NOT NULL,  id_rol INTEGER NOT NULL, imagen BLOB, nombre_r VARCHAR(50), telefono INTEGER, correo VARCHAR(50), direccion VARCHAR(50));";
 
-    asignatura: string = "CREATE TABLE IF NOT EXISTS asignatura(id_asignatura INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL, nombre VARCHAR(50) NOT NULL);";
+  asignatura: string = "CREATE TABLE IF NOT EXISTS asignatura(id_asignatura INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL, nombre VARCHAR(50) NOT NULL);";
 
-    seccion: string = "CREATE TABLE IF NOT EXISTS seccion(id_seccion INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL);";
+  seccion: string = "CREATE TABLE IF NOT EXISTS seccion(id_seccion INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL);";
     //rol: string = "CREATE TABLE IF NOT EXISTS rol(id_rol INTEGER PRIMARY KEY autoincrement, nom_rol VARCHAR(50) NOT NULL;";
-    asig_secc: string ="CREATE TABLE IF NOT EXISTS asig_secc(id_asig_secc INTEGER PRIMARY KEY autoincrement, FOREIGN KEY(fk_id_asignatura) REFERENCES asignatura(id_asignatura), FOREIGN KEY(fk_id_seccion) REFERENCES seccion(id_seccion),FOREIGN KEY(fk_id_usuario) REFERENCES usuario(id_usuario));";
+  asig_secc: string ="CREATE TABLE IF NOT EXISTS asig_secc(id_asig_secc INTEGER PRIMARY KEY autoincrement, FOREIGN KEY(fk_id_asignatura) REFERENCES asignatura(id_asignatura), FOREIGN KEY(fk_id_seccion) REFERENCES seccion(id_seccion),FOREIGN KEY(fk_id_usuario) REFERENCES usuario(id_usuario));";
 
     asistencia: string = "CREATE TABLE IF NOT EXISTS asistencia(id_asistencia INTEGER PRIMARY KEY autoincrement, fecha DATE NOT NULL, hora_inicio VARCHAR(50) NOT NULL, hora_fin VARCHAR(50) NOT NULL, FOREIGN KEY(fk_id_asig_secc) REFERENCES asig_secc(id_asig_secc));";
     //listado: string = "CREATE TABLE IF NOT EXISTS listado(id_listado INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL,FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
@@ -33,49 +33,49 @@ export class BaseService {
   
   
     //observable para manipular los registros de una tabla
-    listaUsuarios = new BehaviorSubject([]);
-    listaAsistecia = new BehaviorSubject([]);
-    listaSecciones = new BehaviorSubject([]);
-    listaAsig_secc = new BehaviorSubject([]);
-    listaDetalle_asist = new BehaviorSubject([]);
-    listaListado = new BehaviorSubject([]);
-    listaRol = new BehaviorSubject([]);
-    listAsignatura = new BehaviorSubject([]);
+  listaUsuarios = new BehaviorSubject([]);
+  listaAsistecia = new BehaviorSubject([]);
+  listaSecciones = new BehaviorSubject([]);
+  listaAsig_secc = new BehaviorSubject([]);
+  listaDetalle_asist = new BehaviorSubject([]);
+  listaListado = new BehaviorSubject([]);
+  listaRol = new BehaviorSubject([]);
+  listAsignatura = new BehaviorSubject([]);
     //observable para validar si la BD esta disponible o no
-    private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
   
 
-    constructor(private sqlite: SQLite, private platform: Platform, private alertController: AlertController) {
-      this.crearBD();
-    }
-    async presentAlert(msj: string) {
-      const alert = await this.alertController.create({
-        header: 'Importante',
-        message: msj,
-        buttons: ['OK'],
-      });
+  constructor(private sqlite: SQLite, private platform: Platform, private alertController: AlertController) {
+    this.crearBD();
+  }
+  async presentAlert(msj: string) {
+    const alert = await this.alertController.create({
+      header: 'Importante',
+      message: msj,
+      buttons: ['OK'],
+    });
   
-      await alert.present();
-    }
+    await alert.present();
+  }
   
-    crearBD() {
-      //verificamos que la plataforma este lista
-      this.platform.ready().then(() => {
-        //creamos la BD
-        this.sqlite.create({
-          name: 'bdasisterin93.db',
-          location: 'default'
-        }).then((db: SQLiteObject) => {
-          this.database = db;
-          //llamar a la funcion para crear las tablas
-          this.crearTablas();
-        }).catch(e => {
-          this.presentAlert("Error creación BD: " + e);
-        })
-  
-  
+  crearBD() {
+    //verificamos que la plataforma este lista
+    this.platform.ready().then(() => {
+      //creamos la BD
+      this.sqlite.create({
+        name: 'bdasist1.db',
+        location: 'default'
+      }).then((db: SQLiteObject) => {
+        this.database = db;
+        //llamar a la funcion para crear las tablas
+        this.crearTablas();
+      }).catch(e => {
+        this.presentAlert("Error creación BD: " + e);
       })
-    }
+  
+  
+    })
+  }
   
   
     async crearTablas() {
@@ -114,13 +114,13 @@ export class BaseService {
 
   
   
-    dbState() {
-      return this.isDBReady.asObservable();
-    }
+  dbState() {
+    return this.isDBReady.asObservable();
+  }
     //1 usuario
-    fetchUsuarios(): Observable<Usuarios[]> {
-      return this.listaUsuarios.asObservable();
-    }
+  fetchUsuarios(): Observable<Usuarios[]> {
+    return this.listaUsuarios.asObservable();
+  }
     //2 asig_secc
     fetchAsig_asecc(): Observable<AsigSeccs[]> {
       return this.listaAsig_secc.asObservable();
@@ -339,43 +339,43 @@ export class BaseService {
     }*/
 
 
-    buscarUsuarios() {
-      //ejecuto la consulta
-      return this.database.executeSql('SELECT * FROM usuario', []).then(res => {
-        //creo el arreglo para los registros
-        let items: Usuarios [] = [];
+  buscarUsuarios() {
+    //ejecuto la consulta
+    return this.database.executeSql('SELECT * FROM usuario', []).then(res => {
+      //creo el arreglo para los registros
+      let items: Usuarios [] = [];
         //si existen filas
-        if (res.rows.length > 0) {
+      if (res.rows.length > 0) {
           //recorro el cursor y lo agrego al arreglo
-          for (var i = 0; i < res.rows.length; i++) {
-            items.push({
-              id_usuario: res.rows.item(i).id_usuario,
-              nombre: res.rows.item(i).nombre,
-              clave: res.rows.item(i).clave,
-              id_rol: res.rows.item(i).id_rol,
-              imagen: res.row.item(i).imagen,
-              nombre_r: res.row.item(i).nombre_r,
-              telefono: res.row.item(i).telefono,
-              correo: res.row.item(i).correo,
-              direccion: res.row.item(i).direccion
-            })
-          }
+        for (var i = 0; i < res.rows.length; i++) {
+          items.push({
+            id_usuario: res.rows.item(i).id_usuario,
+            nombre: res.rows.item(i).nombre,
+            clave: res.rows.item(i).clave,
+            id_rol: res.rows.item(i).id_rol,
+            imagen: res.row.item(i).imagen,
+            nombre_r: res.row.item(i).nombre_r,
+            telefono: res.row.item(i).telefono,
+            correo: res.row.item(i).correo,
+            direccion: res.row.item(i).direccion
+          })
         }
+      }
         //actualizo el observable
-        this.listaUsuarios.next(items);
+      this.listaUsuarios.next(items);
   
-      })
-    }
+    })
+  }
 
     //registro de datos
     //registrar usuario
-    registrarUsuario(id_usuario, nombre ,clave,id_rol) {
-      let data = [id_usuario , nombre,clave,id_rol];
-      return this.database.executeSql('INSERT OR IGNORE INTO usuario(id_usuario ,nombre,clave,id_rol) VALUES (?,?,?,?)', data).then(data2 => {
-        this.buscarUsuarios();
-        this.presentAlert("Registro Realizado");
-      })
-    }
+  registrarUsuario(id_usuario, nombre ,clave,id_rol) {
+    let data = [id_usuario , nombre,clave,id_rol];
+    return this.database.executeSql('INSERT or IGNORE INTO usuario(id_usuario ,nombre,clave,id_rol) VALUES (?,?,?,?)', data).then(data2 => {
+      this.buscarUsuarios();
+      this.presentAlert("Registro Realizado");
+    })
+  }
 
     /*registrar rol
     registrarRol(id_rol, nom_rol ) {
