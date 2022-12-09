@@ -63,7 +63,7 @@ export class BaseService {
     this.platform.ready().then(() => {
       //creamos la BD
       this.sqlite.create({
-        name: 'bdasist1.db',
+        name: 'bdasist2.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
         this.database = db;
@@ -84,7 +84,7 @@ export class BaseService {
         await this.database.executeSql(this.usuario, []);
         await this.database.executeSql(this.asignatura, []);
         await this.database.executeSql(this.seccion, []);
-        await this.database.executeSql(this.asig_secc, []);
+        //await this.database.executeSql(this.asig_secc, []);
         //await this.database.executeSql(this.asistencia, []);
         //await this.database.executeSql(this.detalle_asist, []);
         

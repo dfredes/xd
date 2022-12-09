@@ -85,7 +85,7 @@ export class InicioPage implements OnInit {
 
 
       if(res){
-        this.base.buscarUsuarios()
+        
 
         //me subscribo al observable de la lista de noticias
         this.base.fetchUsuarios().subscribe((item)=>{
@@ -95,7 +95,6 @@ export class InicioPage implements OnInit {
         })
       }
     })
-    this.base.presentAlert(JSON.stringify (this.users1))
 
     this.api.getSeccion().subscribe((res)=>{
       this.seccion = res;
@@ -135,6 +134,8 @@ export class InicioPage implements OnInit {
   }
 
   login(){
+    
+    this.base.presentAlert(JSON.stringify (this.users1))
      for(let i of this.users){
       this.base.presentAlert(i.nombre)
 
