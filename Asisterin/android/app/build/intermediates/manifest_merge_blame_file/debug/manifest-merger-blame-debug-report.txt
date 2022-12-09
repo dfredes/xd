@@ -1,0 +1,230 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="io.ionic.starter"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml
+10
+11    <!-- Permissions -->
+12
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:41:5-67
+13-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:41:22-64
+14    <uses-permission android:name="android.permission.VIBRATE" />
+14-->[:capacitor-haptics] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-66
+14-->[:capacitor-haptics] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-63
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-81
+15-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-78
+16
+17    <queries>
+17-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-29:15
+18        <intent>
+18-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-15:18
+19            <action android:name="android.media.action.IMAGE_CAPTURE" />
+19-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-73
+19-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:21-70
+20        </intent>
+21        <intent>
+21-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-18:18
+22            <action android:name="android.intent.action.GET_CONTENT" />
+22-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-72
+22-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:21-69
+23        </intent>
+24        <intent>
+24-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-21:18
+25            <action android:name="android.intent.action.PICK" />
+25-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-65
+25-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:21-62
+26        </intent>
+27        <intent>
+27-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-28:18
+28            <action android:name="com.android.camera.action.CROP" />
+28-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-69
+28-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:23:21-66
+29
+30            <data
+30-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:13-27:44
+31                android:mimeType="image/*"
+31-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:17-43
+32                android:scheme="content" />
+32-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-41
+33        </intent>
+34    </queries>
+35
+36    <uses-feature
+36-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:31:5-33:36
+37        android:name="android.hardware.camera"
+37-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:32:9-47
+38        android:required="false" />
+38-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:9-33
+39    <uses-feature
+39-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:34:5-36:36
+40        android:name="android.hardware.camera.autofocus"
+40-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:35:9-57
+41        android:required="false" />
+41-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:36:9-33
+42
+43    <uses-permission android:name="android.permission.CAMERA" />
+43-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:5-65
+43-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:22-62
+44    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+44-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:39:5-71
+44-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:39:22-68
+45
+46    <uses-feature
+46-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:28:5-30:36
+47        android:name="android.hardware.camera.front"
+47-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:29:9-53
+48        android:required="false" />
+48-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:30:9-33
+49    <uses-feature
+49-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:36:5-38:36
+50        android:name="android.hardware.camera.flash"
+50-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:37:9-53
+51        android:required="false" />
+51-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:38:9-33
+52    <uses-feature
+52-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:39:5-41:36
+53        android:name="android.hardware.screen.landscape"
+53-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:40:9-57
+54        android:required="false" />
+54-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:41:9-33
+55    <uses-feature
+55-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:42:5-44:36
+56        android:name="android.hardware.wifi"
+56-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:43:9-45
+57        android:required="false" />
+57-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:44:9-33
+58
+59    <application
+59-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:5:5-37:19
+60        android:allowBackup="true"
+60-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:6:9-35
+61        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+61-->[androidx.core:core:1.8.0] C:\Users\enzom\.gradle\caches\transforms-3\fe0dba67bfac75aa58e7b93d33808165\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+62        android:debuggable="true"
+63        android:icon="@mipmap/ic_launcher"
+63-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:7:9-43
+64        android:label="@string/app_name"
+64-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:8:9-41
+65        android:roundIcon="@mipmap/ic_launcher_round"
+65-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:9:9-54
+66        android:supportsRtl="true"
+66-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:10:9-35
+67        android:testOnly="true"
+68        android:theme="@style/AppTheme" >
+68-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:11:9-40
+69        <activity
+69-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:13:9-26:20
+70            android:name="io.ionic.starter.MainActivity"
+70-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:15:13-57
+71            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+71-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:14:13-129
+72            android:exported="true"
+72-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:19:13-36
+73            android:label="@string/title_activity_main"
+73-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:16:13-56
+74            android:launchMode="singleTask"
+74-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:18:13-44
+75            android:theme="@style/AppTheme.NoActionBarLaunch" >
+75-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:17:13-62
+76            <intent-filter>
+76-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:21:13-24:29
+77                <action android:name="android.intent.action.MAIN" />
+77-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:22:17-69
+77-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:22:25-66
+78
+79                <category android:name="android.intent.category.LAUNCHER" />
+79-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:23:17-77
+79-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:23:27-74
+80            </intent-filter>
+81        </activity>
+82
+83        <provider
+84            android:name="androidx.core.content.FileProvider"
+84-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:29:13-62
+85            android:authorities="io.ionic.starter.fileprovider"
+85-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:30:13-64
+86            android:exported="false"
+86-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:31:13-37
+87            android:grantUriPermissions="true" >
+87-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:32:13-47
+88            <meta-data
+88-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:33:13-35:64
+89                android:name="android.support.FILE_PROVIDER_PATHS"
+89-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:34:17-67
+90                android:resource="@xml/file_paths" />
+90-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:35:17-51
+91        </provider>
+92        <provider
+92-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:42:9-50:20
+93            android:name="org.apache.cordova.camera.FileProvider"
+93-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:43:13-66
+94            android:authorities="io.ionic.starter.cordova.plugin.camera.provider"
+94-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:44:13-82
+95            android:exported="false"
+95-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:45:13-37
+96            android:grantUriPermissions="true" >
+96-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:46:13-47
+97            <meta-data
+97-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:33:13-35:64
+98                android:name="android.support.FILE_PROVIDER_PATHS"
+98-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:34:17-67
+99                android:resource="@xml/camera_provider_paths" />
+99-->C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\app\src\main\AndroidManifest.xml:35:17-51
+100        </provider>
+101
+102        <activity
+102-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:52:9-55:57
+103            android:name="com.cordovaplugincamerapreview.CameraActivity"
+103-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:53:13-73
+104            android:screenOrientation="portrait"
+104-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:54:13-49
+105            android:theme="@style/CameraPreviewTheme" />
+105-->[:capacitor-cordova-android-plugins] C:\Users\enzom\OneDrive\Documentos\GitHub\xd\Asisterin\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:55:13-54
+106
+107        <provider
+107-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+108            android:name="androidx.startup.InitializationProvider"
+108-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+109            android:authorities="io.ionic.starter.androidx-startup"
+109-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+110            android:exported="false" >
+110-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+111            <meta-data
+111-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+112                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+112-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+113                android:value="androidx.startup" />
+113-->[androidx.emoji2:emoji2:1.0.0] C:\Users\enzom\.gradle\caches\transforms-3\8876b0ef355d9d3e8b47dae2b38cca4c\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+114            <meta-data
+114-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\enzom\.gradle\caches\transforms-3\31fc96d9881c54f9b47ddec530ec8052\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+115                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+115-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\enzom\.gradle\caches\transforms-3\31fc96d9881c54f9b47ddec530ec8052\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+116                android:value="androidx.startup" />
+116-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\enzom\.gradle\caches\transforms-3\31fc96d9881c54f9b47ddec530ec8052\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+117        </provider>
+118
+119        <activity
+119-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:47:9-53:63
+120            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+120-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:48:13-74
+121            android:clearTaskOnLaunch="true"
+121-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:49:13-45
+122            android:screenOrientation="sensorLandscape"
+122-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:50:13-56
+123            android:stateNotNeeded="true"
+123-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:51:13-42
+124            android:theme="@style/zxing_CaptureTheme"
+124-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:52:13-54
+125            android:windowSoftInputMode="stateAlwaysHidden" />
+125-->[com.journeyapps:zxing-android-embedded:4.3.0] C:\Users\enzom\.gradle\caches\transforms-3\c620990d6c260a72572b2d617ef2befe\transformed\jetified-zxing-android-embedded-4.3.0\AndroidManifest.xml:53:13-60
+126    </application>
+127
+128</manifest>
