@@ -31,7 +31,7 @@ export class PerfilPage implements OnInit {
     this.base.dbState().subscribe((res) => {
       if (res) {
 
-        this.base.buscarusuarios();
+        this.base.buscarUsuarios();
         //subscribimos al observable que hace el select en la tabla noticias
         this.base.fetchUsuarios().subscribe((item) => {
           //guardamos estos cambios de información en una variable propia de este ts

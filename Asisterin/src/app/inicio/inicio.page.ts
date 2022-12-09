@@ -19,7 +19,14 @@ import { BaseService } from '../services/base.service';
 export class InicioPage implements OnInit {
 
   users: any = [{
-    id: '',
+    id_usuario: '',
+    nombre: '',
+    clave: '',
+    id_rol: ''
+  }]
+
+  users1: any = [{
+    id_usuario: '',
     nombre: '',
     clave: '',
     id_rol: ''
@@ -62,16 +69,33 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     this.api.getUsuario().subscribe((res)=>{
       this.users = res;
-      this.base.presentAlert(JSON.stringify (this.users))
+      
       //console.log(res)
-      for(let x of this.users){
+      for (var i = 0; i < this.users.length; i++){
         //this.servicioBD.presentAlert(x.nombre);
-        this.base.registrarUsuario(x.id, x.nombre,x.clave, x.id_rol);
+        this.base.registrarUsuario(this.users[i].id_usuario,this.users[i].nombre,this.users[i].clave,this.users[i].id_rol);
       }
 
       
      
     });
+
+
+    this.base.dbState().subscribe((res)=>{
+
+
+      if(res){
+        this.base.buscarUsuarios()
+
+        //me subscribo al observable de la lista de noticias
+        this.base.fetchUsuarios().subscribe((item)=>{
+
+          this.users1 = item;
+
+        })
+      }
+    })
+    this.base.presentAlert(JSON.stringify (this.users1))
 
     this.api.getSeccion().subscribe((res)=>{
       this.seccion = res;

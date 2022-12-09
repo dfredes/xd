@@ -17,15 +17,22 @@ import { Usuarios } from './usuarios';
 export class BaseService {
   public database: SQLiteObject;
   //variables para crear tablas e insertar registros por defecto en tablas
-    usuario: string = "CREATE TABLE IF NOT EXISTS usuario(id_usuario INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50) NOT NULL, clave VARCHAR(50) NOT NULL,  id_rol INTEGER NOT NULL, imagen BLOB, nombre_r VARCHAR(50), telefono INTERGER, correo VARCHAR(50),direccion VARCHAR(50)  );";
+    usuario: string ="CREATE TABLE IF NOT EXISTS usuario(id_usuario INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(50) NOT NULL, clave VARCHAR(50) NOT NULL,  id_rol INTEGER NOT NULL, imagen BLOB, nombre_r VARCHAR(50), telefono INTEGER, correo VARCHAR(50), direccion VARCHAR(50));";
+
+    asignatura: string = "CREATE TABLE IF NOT EXISTS asignatura(id_asignatura INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL, nombre VARCHAR(50) NOT NULL);";
+
+    seccion: string = "CREATE TABLE IF NOT EXISTS seccion(id_seccion INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL);";
     //rol: string = "CREATE TABLE IF NOT EXISTS rol(id_rol INTEGER PRIMARY KEY autoincrement, nom_rol VARCHAR(50) NOT NULL;";
-    asig_secc: string = "CREATE TABLE IF NOT EXISTS asig_secc(id_asig_secc INTEGER PRIMARY KEY autoincrement, FOREIGN KEY(id_asignatura) REFERENCES asignatura(id_asignatura), FOREIGN KEY(id_seccion) REFERENCES seccion(id_seccion),FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario);";
-    seccion: string = "CREATE TABLE IF NOT EXISTS seccion(id_seccion INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL ;";
-    asignatura: string = "CREATE TABLE IF NOT EXISTS asignatura(id_asignatura INTEGER PRIMARY KEY autoincrement, sigla VARCHAR(50) NOT NULL, nombre VARCHAR(50) NOT NULL ;";
+    asig_secc: string ="CREATE TABLE IF NOT EXISTS asig_secc(id_asig_secc INTEGER PRIMARY KEY autoincrement, FOREIGN KEY(fk_id_asignatura) REFERENCES asignatura(id_asignatura), FOREIGN KEY(fk_id_seccion) REFERENCES seccion(id_seccion),FOREIGN KEY(fk_id_usuario) REFERENCES usuario(id_usuario));";
+
+    asistencia: string = "CREATE TABLE IF NOT EXISTS asistencia(id_asistencia INTEGER PRIMARY KEY autoincrement, fecha DATE NOT NULL, hora_inicio VARCHAR(50) NOT NULL, hora_fin VARCHAR(50) NOT NULL, FOREIGN KEY(fk_id_asig_secc) REFERENCES asig_secc(id_asig_secc));";
     //listado: string = "CREATE TABLE IF NOT EXISTS listado(id_listado INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL,FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
-    detalle_asist: string = "CREATE TABLE IF NOT EXISTS detalle_asist(id_detalle INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL, FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(id_asistencia) REFERENCES asistencia(id_asistencia);";
-    asistencia: string = "CREATE TABLE IF NOT EXISTS asistencia(id_asistencia INTEGER PRIMARY KEY autoincrement, fecha DATE NOT NULL, hora_inicio VARCHAR(50) NOT NULL, hora_fin VARCHAR(50) NOT NULL, FOREIGN KEY(id_asig_secc) REFERENCES asig_secc(id_asig_secc);";
-  //observable para manipular los registros de una tabla
+    detalle_asist: string = "CREATE TABLE IF NOT EXISTS detalle_asist(id_detalle INTEGER PRIMARY KEY autoincrement, status VARCHAR(50) NOT NULL, FOREIGN KEY(fk_id_usuario) REFERENCES usuario(id_usuario),FOREIGN KEY(fk_id_asistencia) REFERENCES asistencia(id_asistencia));";
+
+
+  
+  
+    //observable para manipular los registros de una tabla
     listaUsuarios = new BehaviorSubject([]);
     listaAsistecia = new BehaviorSubject([]);
     listaSecciones = new BehaviorSubject([]);
@@ -56,7 +63,7 @@ export class BaseService {
       this.platform.ready().then(() => {
         //creamos la BD
         this.sqlite.create({
-          name: 'bdasisterin77.db',
+          name: 'bdasisterin93.db',
           location: 'default'
         }).then((db: SQLiteObject) => {
           this.database = db;
@@ -75,17 +82,16 @@ export class BaseService {
       try {
         //ejecuto creacion de tablas
         await this.database.executeSql(this.usuario, []);
-        //await this.database.executeSql(this.rol, []);
-        await this.database.executeSql(this.asig_secc, []);
-        await this.database.executeSql(this.seccion, []);
-        //await this.database.executeSql(this.listado, []);
         await this.database.executeSql(this.asignatura, []);
-        await this.database.executeSql(this.detalle_asist, []);
-        await this.database.executeSql(this.asistencia, []);
+        await this.database.executeSql(this.seccion, []);
+        await this.database.executeSql(this.asig_secc, []);
+        //await this.database.executeSql(this.asistencia, []);
+        //await this.database.executeSql(this.detalle_asist, []);
+        
 
   
         //llamo al observable de carga de datos
-        this.buscarusuarios();
+        this.buscarUsuarios();
         this.buscarseccion();
         this.buscarasig_secc();
         this.buscarasistencia();
@@ -333,7 +339,7 @@ export class BaseService {
     }*/
 
 
-    buscarusuarios() {
+    buscarUsuarios() {
       //ejecuto la consulta
       return this.database.executeSql('SELECT * FROM usuario', []).then(res => {
         //creo el arreglo para los registros
@@ -366,7 +372,7 @@ export class BaseService {
     registrarUsuario(id_usuario, nombre ,clave,id_rol) {
       let data = [id_usuario , nombre,clave,id_rol];
       return this.database.executeSql('INSERT OR IGNORE INTO usuario(id_usuario ,nombre,clave,id_rol) VALUES (?,?,?,?)', data).then(data2 => {
-        this.buscarusuarios();
+        this.buscarUsuarios();
         this.presentAlert("Registro Realizado");
       })
     }
@@ -442,7 +448,7 @@ export class BaseService {
     modificarUsuario(id_usuario, nombre,clave) {
       let data = [id_usuario, nombre,clave];
       return this.database.executeSql('UPDATE usuario SET nombre = ?, clave = ?  WHERE id_usuario = ?', data).then(data2 => {
-        this.buscarusuarios();
+        this.buscarUsuarios();
         this.presentAlert("Registro Modificado");
       })
   
@@ -526,7 +532,7 @@ export class BaseService {
     //eliminar usuario
     eliminarusuario(id){
       return this.database.executeSql('DELETE FROM usuario WHERE id_usuario = ?',[id]).then(data2=>{
-        this.buscarusuarios();
+        this.buscarUsuarios();
         this.presentAlert("Registro Eliminado");
       })
   
